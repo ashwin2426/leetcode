@@ -1,0 +1,11 @@
+class Solution:
+    def rob(self, nums: list[int]) -> int:
+        rob_two_back = 0  # max money up to house i - 2
+        rob_one_back = 0  # max money up to house i - 1
+
+        for num in nums:
+            current_best = max(rob_one_back, rob_two_back + num)
+            rob_two_back = rob_one_back
+            rob_one_back = current_best
+
+        return rob_one_back
